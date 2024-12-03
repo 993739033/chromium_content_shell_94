@@ -1,0 +1,84 @@
+apply plugin: 'com.android.library'
+
+android {
+    namespace 'com.scode.content_shell'
+    compileSdk 33
+
+    defaultConfig {
+        minSdk 21
+        targetSdk 30
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
+        multiDexEnabled true
+
+        ndk {
+            abiFilters 'armeabi'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['src/main/jniLibs']
+        }
+    }
+
+//    packaging {
+//        resources {
+//            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+//        }
+//    }
+
+    buildFeatures {
+        dataBinding = true
+    }
+
+    aaptOptions {
+        noCompress "dat", "bin", "pak"
+    }
+
+    packagingOptions {
+        resources {
+            exclude("META-INF/DEPENDENCIES")>
+                    exclude("META-INF/LICENSE")
+            exclude("META-INF/LICENSE.txt")
+            exclude("META-INF/license.txt")
+            exclude("META-INF/NOTICE")
+            exclude("META-INF/NOTICE.txt")
+            exclude("META-INF/notice.txt")
+            exclude("META-INF/ASL2.0")
+            exclude("META-INF/*.kotlin_module")
+            exclude("META-INF/INDEX.LIST")
+            exclude("META-INF/io.netty.versions.properties")
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ["*.aar", "*.jar"], dir: 'libs')
+    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation "androidx.multidex:multidex:2.0.0"
+
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation files('libs\\jsr305-3.0.2.jar')
+    implementation files('libs\\auto-service-annotations-1.0-rc6.jar')
+    implementation files('libs\\guava-30.1-jre.jar')
+    implementation files('libs\\javapoet-1.13.0.jar')
+    implementation files('libs\\jsr250-api-1.0.jar')
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}
