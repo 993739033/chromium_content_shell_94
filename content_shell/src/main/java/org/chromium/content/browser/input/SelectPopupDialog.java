@@ -15,8 +15,9 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
+import com.scode.content_shell.R;
+
 import org.chromium.base.Callback;
-import org.chromium.content.R;
 import org.chromium.ui.widget.UiWidgetFactory;
 
 import java.util.List;

@@ -8,8 +8,11 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- Whether the device is a phone, tablet or large tablet. Used to determine which resources
          the OS loaded. -->
-    <integer name="min_screen_width_dbucket">1</integer>
 
     <!--  Exdepand more  -->
+
+    <integer name="min_screen_width_bucket">1</integer>
+
+    <!--  Expand more  -->
     <integer name="expand_more_horizontal_rotation_degree">270</integer>
 </resources>

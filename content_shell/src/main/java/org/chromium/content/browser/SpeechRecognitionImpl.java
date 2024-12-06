@@ -17,6 +17,8 @@ import android.speech.RecognitionService;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
 
+import com.scode.content_shell.R;
+
 import org.chromium.base.ContextUtils;
 import org.chromium.base.Log;
 import org.chromium.base.PackageUtils;
@@ -24,12 +26,12 @@ import org.chromium.base.annotations.CalledByNative;
 import org.chromium.base.annotations.JNINamespace;
 import org.chromium.base.annotations.NativeMethods;
 import org.chromium.blink.mojom.SpeechRecognitionErrorCode;
-import org.chromium.content.R;
 import org.chromium.content_public.browser.SpeechRecognition;
 import org.chromium.ui.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 /**
  * Implementation of {@link SpeechRecognition}.

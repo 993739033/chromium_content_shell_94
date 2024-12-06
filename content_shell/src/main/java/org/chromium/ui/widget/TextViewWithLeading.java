@@ -9,7 +9,7 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
-import org.chromium.ui.R;
+import com.scode.content_shell.R;
 
 /**
  * A TextView with the added leading property.

@@ -166,11 +166,11 @@ public class UrlUtilities {
      * @param includePrivateRegistries Whether or not to consider private registries.
      * @return True iff the two URIs belong to the same domain or host.
      */
-    public static boolean sameDomainOrHost(
-            String primaryUrl, String secondaryUrl, boolean includePrivateRegistries) {
-        return UrlUtilitiesJni.get().sameDomainOrHost(
-                primaryUrl, secondaryUrl, includePrivateRegistries);
-    }
+//    public static boolean sameDomainOrHost(
+//            String primaryUrl, String secondaryUrl, boolean includePrivateRegistries) {
+//        return UrlUtilitiesJni.get().sameDomainOrHost(
+//                primaryUrl, secondaryUrl, includePrivateRegistries);
+//    }
 
     /**
      * Returns a new URL without the port in the hostname if it was present.
@@ -178,10 +178,10 @@ public class UrlUtilities {
      * @return
      */
     // TODO(crbug/783819): Expose GURL::Replacements to Java.
-    public static GURL clearPort(GURL url) {
-        if (url == null || TextUtils.isEmpty(url.getPort())) return url;
-        return UrlUtilitiesJni.get().clearPort(url);
-    }
+//    public static GURL clearPort(GURL url) {
+//        if (url == null || TextUtils.isEmpty(url.getPort())) return url;
+//        return UrlUtilitiesJni.get().clearPort(url);
+//    }
 
     /**
      * This function works by calling net::registry_controlled_domains::GetDomainAndRegistry
@@ -196,27 +196,27 @@ public class UrlUtilities {
      * identifier.
      */
     // TODO(crbug/783819): Convert to GURL.
-    public static String getDomainAndRegistry(String uri, boolean includePrivateRegistries) {
-        if (TextUtils.isEmpty(uri)) return uri;
-        return UrlUtilitiesJni.get().getDomainAndRegistry(uri, includePrivateRegistries);
-    }
+//    public static String getDomainAndRegistry(String uri, boolean includePrivateRegistries) {
+//        if (TextUtils.isEmpty(uri)) return uri;
+//        return UrlUtilitiesJni.get().getDomainAndRegistry(uri, includePrivateRegistries);
+//    }
 
     /** Returns whether a URL is within another URL's scope. */
-    public static boolean isUrlWithinScope(String url, String scopeUrl) {
-        return UrlUtilitiesJni.get().isUrlWithinScope(url, scopeUrl);
-    }
+//    public static boolean isUrlWithinScope(String url, String scopeUrl) {
+//        return UrlUtilitiesJni.get().isUrlWithinScope(url, scopeUrl);
+//    }
 
     /** @return whether two URLs match, ignoring the #fragment. */
-    public static boolean urlsMatchIgnoringFragments(String url, String url2) {
-        if (TextUtils.equals(url, url2)) return true;
-        return UrlUtilitiesJni.get().urlsMatchIgnoringFragments(url, url2);
-    }
+//    public static boolean urlsMatchIgnoringFragments(String url, String url2) {
+//        if (TextUtils.equals(url, url2)) return true;
+//        return UrlUtilitiesJni.get().urlsMatchIgnoringFragments(url, url2);
+//    }
 
     /** @return whether the #fragmant differs in two URLs. */
-    public static boolean urlsFragmentsDiffer(String url, String url2) {
-        if (TextUtils.equals(url, url2)) return false;
-        return UrlUtilitiesJni.get().urlsFragmentsDiffer(url, url2);
-    }
+//    public static boolean urlsFragmentsDiffer(String url, String url2) {
+//        if (TextUtils.equals(url, url2)) return false;
+//        return UrlUtilitiesJni.get().urlsFragmentsDiffer(url, url2);
+//    }
 
     /**
      * @param url An HTTP or HTTPS URL.
@@ -252,9 +252,9 @@ public class UrlUtilities {
      * @param usePlus whether or not to use "+" in place of spaces.
      * @return the escaped string.
      */
-    public static String escapeQueryParamValue(String text, boolean usePlus) {
-        return UrlUtilitiesJni.get().escapeQueryParamValue(text, usePlus);
-    }
+//    public static String escapeQueryParamValue(String text, boolean usePlus) {
+//        return UrlUtilitiesJni.get().escapeQueryParamValue(text, usePlus);
+//    }
 
     /**
      * This variation of #isNTPUrl is for already parsed URLs, not for direct use on user-provided
@@ -317,9 +317,9 @@ public class UrlUtilities {
      * @return null if the key doesn't exist in the query string for the URL. Otherwise, returns the
      * value for the key in the query string.
      */
-    public static String getValueForKeyInQuery(GURL url, String key) {
-        return UrlUtilitiesJni.get().getValueForKeyInQuery(url, key);
-    }
+//    public static String getValueForKeyInQuery(GURL url, String key) {
+//        return UrlUtilitiesJni.get().getValueForKeyInQuery(url, key);
+//    }
 
     /**
      * @return true if |url|'s scheme is for an Android intent.

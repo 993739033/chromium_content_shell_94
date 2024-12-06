@@ -10,12 +10,13 @@ import android.content.res.Resources;
 import android.util.TypedValue;
 import android.view.ViewConfiguration;
 
+import com.scode.content_shell.R;
+
 import org.chromium.base.ContextUtils;
 import org.chromium.base.StrictModeContext;
 import org.chromium.base.annotations.CalledByNative;
 import org.chromium.base.annotations.JNINamespace;
 import org.chromium.base.annotations.NativeMethods;
-import org.chromium.ui.R;
 
 /**
  * This class facilitates access to ViewConfiguration-related properties, also

@@ -23,7 +23,7 @@ import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.graphics.ColorUtils;
 import androidx.core.view.ViewCompat;
 
-import org.chromium.ui.R;
+import com.scode.content_shell.R;
 
 /**
  * A helper class to create and maintain a background drawable with customized background color,

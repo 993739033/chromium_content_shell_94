@@ -19,13 +19,14 @@ import androidx.core.provider.FontsContractCompat;
 import androidx.core.provider.FontsContractCompat.FontFamilyResult;
 import androidx.core.provider.FontsContractCompat.FontInfo;
 
+import com.scode.content_shell.R;
+
 import org.chromium.base.ContextUtils;
 import org.chromium.base.Log;
 import org.chromium.base.metrics.RecordHistogram;
 import org.chromium.base.task.PostTask;
 import org.chromium.base.task.TaskTraits;
 import org.chromium.blink.mojom.AndroidFontLookup;
-import org.chromium.content.R;
 import org.chromium.mojo.bindings.ExecutorFactory;
 import org.chromium.mojo.system.Core;
 import org.chromium.mojo.system.MojoException;

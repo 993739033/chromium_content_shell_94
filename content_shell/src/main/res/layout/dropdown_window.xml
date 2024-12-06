@@ -21,7 +21,8 @@
         android:layout_weight="1"
         android:layout_marginVertical="@dimen/dropdown_vertical_margin" />
 
-    <View style="@style/HorizontalDivider"
+    <View
+        android:background="@color/black_alpha_11"
         android:id="@+id/dropdown_body_footer_divider"
         android:layout_height="@dimen/divider_height"
         android:layout_width="match_parent"

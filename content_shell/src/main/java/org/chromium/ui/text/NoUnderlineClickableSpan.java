@@ -11,9 +11,10 @@ import android.view.View;
 
 import androidx.annotation.ColorRes;
 
+import com.scode.content_shell.R;
+
 import org.chromium.base.ApiCompatibilityUtils;
 import org.chromium.base.Callback;
-import org.chromium.ui.R;
 
 /**
  * Shows a blue clickable link with underlines turned off.

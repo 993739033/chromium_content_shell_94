@@ -8,6 +8,8 @@ import android.graphics.Bitmap;
 
 import androidx.annotation.Nullable;
 
+import com.scode.content_shell.R;
+
 import org.chromium.url.GURL;
 /**
  * Base implementation of DropdownItem which is used to get default settings to

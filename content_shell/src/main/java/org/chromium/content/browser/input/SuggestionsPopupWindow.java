@@ -25,8 +25,9 @@ import android.widget.TextView;
 
 import androidx.annotation.VisibleForTesting;
 
+import com.scode.content_shell.R;
+
 import org.chromium.base.ApiCompatibilityUtils;
-import org.chromium.content.R;
 import org.chromium.ui.UiUtils;
 import org.chromium.ui.base.WindowAndroid;
 

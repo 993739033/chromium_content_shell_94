@@ -31,6 +31,8 @@ import android.view.textclassifier.TextClassifier;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 
+import com.scode.content_shell.R;
+
 import org.chromium.base.Log;
 import org.chromium.base.PackageManagerUtils;
 import org.chromium.base.UserData;
@@ -39,7 +41,6 @@ import org.chromium.base.annotations.JNINamespace;
 import org.chromium.base.annotations.NativeMethods;
 import org.chromium.base.compat.ApiHelperForM;
 import org.chromium.base.metrics.RecordUserAction;
-import org.chromium.content.R;
 import org.chromium.content.browser.ContentApiHelperForM;
 import org.chromium.content.browser.ContentClassFactory;
 import org.chromium.content.browser.GestureListenerManagerImpl;
@@ -66,6 +67,7 @@ import org.chromium.ui.touch_selection.SelectionEventType;
 import org.chromium.ui.touch_selection.TouchSelectionDraggableType;
 
 import java.util.List;
+
 
 /**
  * Implementation of the interface {@link SelectionPopupController}.

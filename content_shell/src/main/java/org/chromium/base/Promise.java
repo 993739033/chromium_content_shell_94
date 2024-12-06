@@ -76,7 +76,7 @@ public class Promise<T> {
         }
 
         assert mRejectCallbacks.size() == 0 : "Do not call the single argument "
-            + "Promise.then(Callback) on a Promise that already has a rejection handler.";
+                + "Promise.then(Callback) on a Promise that already has a rejection handler.";
 
         Callback<Exception> onReject = reason -> {
             throw new UnhandledRejectionException(
@@ -123,7 +123,7 @@ public class Promise<T> {
 
     private void exceptInner(Callback<Exception> onReject) {
         assert !mThrowingRejectionHandler : "Do not add an exception handler to a Promise you have "
-            + "called the single argument Promise.then(Callback) on.";
+                + "called the single argument Promise.then(Callback) on.";
 
         if (mState == PromiseState.REJECTED) {
             postCallbackToLooper(onReject, mRejectReason);
@@ -161,7 +161,7 @@ public class Promise<T> {
     }
 
     /**
-     * Queues a {@link AsyncFunction} to be run when the Promise is fulfilled. When this
+     * Queues a {@link Promise.AsyncFunction} to be run when the Promise is fulfilled. When this
      * Promise is fulfilled, the AsyncFunction will be run. When the result of the AsyncFunction is
      * available, it will be placed in the returned Promise.
      */

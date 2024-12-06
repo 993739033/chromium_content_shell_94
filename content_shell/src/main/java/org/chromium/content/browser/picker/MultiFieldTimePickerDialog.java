@@ -12,7 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.NumberPicker;
 
-import org.chromium.content.R;
+import com.scode.content_shell.R;
 
 import java.util.ArrayList;
 import java.util.Locale;

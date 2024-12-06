@@ -10,7 +10,7 @@ import android.graphics.Paint;
 import android.text.Layout;
 import android.text.style.BulletSpan;
 
-import org.chromium.ui.R;
+import com.scode.content_shell.R;
 
 /**
  * A wrapper around Android's BulletSpan that provides default styling and adjusts the bullet

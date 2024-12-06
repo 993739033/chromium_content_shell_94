@@ -13,7 +13,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import org.chromium.content.R;
+import com.scode.content_shell.R;
+
 import org.chromium.ui.base.DeviceFormFactor;
 
 /**

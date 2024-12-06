@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import org.chromium.content.R;
+import com.scode.content_shell.R;
 
 import java.util.List;
 

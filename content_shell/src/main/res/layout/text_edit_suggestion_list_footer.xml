@@ -14,11 +14,13 @@
         android:layout_height="1dp"
         android:layout_width="match_parent" />
     <TextView
-        style="@style/TextAppearance.TextSuggestionButton"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
         android:id="@+id/addToDictionaryButton"
-        android:text="@string/add_to_dictionary" />
+        android:text="+" />
     <TextView
-        style="@style/TextAppearance.TextSuggestionButton"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
         android:id="@+id/deleteButton"
-        android:text="@string/delete_suggestion_text" />
+        android:text="-" />
 </LinearLayout>

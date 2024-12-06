@@ -19,7 +19,6 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        android:contentDescription="@string/accessibility_date_picker_month"
         android:focusable="true"
         android:focusableInTouchMode="true" />
 
@@ -31,7 +30,6 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        android:contentDescription="@string/accessibility_date_picker_year"
         android:focusable="true"
         android:focusableInTouchMode="true" />
 

@@ -15,7 +15,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/time_picker_dialog_title"
+        android:text="请选择"
     android:textSize="20sp"
     android:paddingStart="5dp"
     android:paddingEnd="5dp"
@@ -49,13 +49,11 @@
         android:layout_marginEnd="4dp"
         android:focusable="true"
         android:focusableInTouchMode="true"
-        android:contentDescription="@string/accessibility_time_picker_hour"
         />
     <TextView
         android:layout_width="wrap_content"
         android:textSize="12sp"
         android:layout_height="wrap_content"
-        android:text="@string/time_picker_dialog_hour_minute_separator"
         />
     <NumberPicker
         android:id="@+id/minute"
@@ -67,14 +65,12 @@
         android:layout_marginEnd="4dp"
         android:focusable="true"
         android:focusableInTouchMode="true"
-        android:contentDescription="@string/accessibility_time_picker_minute"
         />
     <TextView
         android:id="@+id/second_colon"
         android:layout_width="wrap_content"
         android:textSize="12sp"
-        android:layout_height="wrap_content"
-        android:text="@string/time_picker_dialog_minute_second_separator"	    />
+        android:layout_height="wrap_content"/>
     <NumberPicker
         android:id="@+id/second"
         android:layout_width="0dp"
@@ -85,14 +81,13 @@
         android:layout_marginEnd="4dp"
         android:focusable="true"
         android:focusableInTouchMode="true"
-        android:contentDescription="@string/accessibility_time_picker_second"
         />
     <TextView
         android:id="@+id/second_dot"
         android:layout_width="wrap_content"
         android:textSize="12sp"
         android:layout_height="wrap_content"
-        android:text="@string/time_picker_dialog_second_subsecond_separator"
+        android:text=":"
         />
     <NumberPicker
         android:id="@+id/milli"
@@ -104,7 +99,6 @@
         android:layout_marginEnd="4dp"
         android:focusable="true"
         android:focusableInTouchMode="true"
-        android:contentDescription="@string/accessibility_time_picker_milli"
         />
     <NumberPicker
         android:id="@+id/ampm"
@@ -116,7 +110,6 @@
         android:layout_marginEnd="4dp"
         android:focusable="true"
         android:focusableInTouchMode="true"
-        android:contentDescription="@string/accessibility_time_picker_ampm"
         />
     </LinearLayout>
 </LinearLayout>

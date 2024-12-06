@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="black_alpha_54">#8a000000</color>
+    <color name="white_alpha_70">#B2FFFFFF</color>
+    <color name="black_alpha_87">#de000000</color>
+    <color name="google_blue_300">#ff7baaf7</color>
+    <color name="google_blue_500">#ff4285f4</color>
+    <color name="google_blue_700">#ff3367d6</color>
+    <color name="http_bad_warning_message_text">#ffc53929</color>
+    <color name="insecure_context_payment_disabled_message_text">#ff646464</color>
+    <color name="keyboard_accessory_hint_icon">#ff4285f4</color>
+
+    <!-- TODO(crbug.com/775198): update colors once UX spec available. -->
+    <color name="color_picker_border_color">@color/hairline_stroke_color</color>
+    <color name="color_picker_background_color">@color/default_bg_color</color>
 </resources>

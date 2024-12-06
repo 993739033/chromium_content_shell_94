@@ -8,10 +8,11 @@ import android.content.Context;
 
 import androidx.annotation.UiThread;
 
+import com.scode.content_shell.R;
+
 import org.chromium.base.ContextUtils;
 import org.chromium.base.ThreadUtils;
 import org.chromium.base.annotations.CalledByNative;
-import org.chromium.ui.R;
 import org.chromium.ui.display.DisplayAndroid;
 import org.chromium.ui.display.DisplayUtil;
 

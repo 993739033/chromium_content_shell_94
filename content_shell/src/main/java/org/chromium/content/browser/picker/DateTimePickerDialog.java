@@ -25,7 +25,7 @@ import android.widget.TimePicker.OnTimeChangedListener;
 import androidx.annotation.NonNull;
 import androidx.annotation.VisibleForTesting;
 
-import org.chromium.content.R;
+import com.scode.content_shell.R;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;

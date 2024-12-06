@@ -12,6 +12,9 @@ android {
         versionCode 1
         versionName "1.0"
 
+        ndk {
+            abiFilters 'armeabi'
+        }
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -25,8 +28,16 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['src/main/jniLibs']
+        }
+    }
 }
 
 dependencies {
+    implementation fileTree(include: ["*.aar", "*.jar"], dir: 'libs')
     implementation project(":content_shell")
 }

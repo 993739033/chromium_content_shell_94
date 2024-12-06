@@ -20,6 +20,8 @@ import android.widget.ListPopupWindow;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 
+import com.scode.content_shell.R;
+
 import org.chromium.base.Log;
 
 import java.lang.reflect.Method;
