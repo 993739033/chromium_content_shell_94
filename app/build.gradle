@@ -8,10 +8,12 @@ android {
     defaultConfig {
         applicationId "com.scode.chromium_content_shell_94"
         minSdk 21
-        targetSdk 30
+        targetSdk 31
         versionCode 1
         versionName "1.0"
-
+        vectorDrawables {
+            useSupportLibrary true
+        }
         ndk {
             abiFilters 'armeabi'
         }
@@ -24,20 +26,34 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    aaptOptions {
+        noCompress "dat", "bin", "pak" ,"icudtl.dat"
+    }
 
-    sourceSets {
-        main {
-            jniLibs.srcDirs = ['src/main/jniLibs']
+    packagingOptions {
+        resources {
+            exclude("META-INF/DEPENDENCIES")>
+                    exclude("META-INF/LICENSE")
+            exclude("META-INF/LICENSE.txt")
+            exclude("META-INF/license.txt")
+            exclude("META-INF/NOTICE")
+            exclude("META-INF/NOTICE.txt")
+            exclude("META-INF/notice.txt")
+            exclude("META-INF/ASL2.0")
+            exclude("META-INF/*.kotlin_module")
+            exclude("META-INF/INDEX.LIST")
+            exclude("META-INF/io.netty.versions.properties")
         }
     }
 }
 
 dependencies {
-    implementation fileTree(include: ["*.aar", "*.jar"], dir: 'libs')
+//    implementation fileTree(include: ["*.aar", "*.jar"], dir: 'libs')
     implementation project(":content_shell")
 }
