@@ -12,14 +12,19 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
 import com.scode.content_shell.R;
 
 import org.chromium.base.CommandLine;
 import org.chromium.base.MemoryPressureListener;
 import org.chromium.base.library_loader.LibraryLoader;
 import org.chromium.base.library_loader.LibraryProcessType;
+import org.chromium.content.browser.JavascriptInterface;
 import org.chromium.content_public.browser.BrowserStartupController;
 import org.chromium.content_public.browser.DeviceUtils;
+import org.chromium.content_public.browser.JavaScriptCallback;
+import org.chromium.content_public.browser.JavascriptInjector;
 import org.chromium.content_public.browser.WebContents;
 import org.chromium.content_shell.Shell;
 import org.chromium.content_shell.ShellManager;
@@ -70,6 +75,7 @@ public class ContentShellActivity extends Activity {
                 new ActivityWindowAndroid(this, listenToActivityState, mIntentRequestTracker);
         mIntentRequestTracker.restoreInstanceState(savedInstanceState);
         mShellManager.setWindow(mWindowAndroid);
+
         // Set up the animation placeholder to be the SurfaceView. This disables the
         // SurfaceView's 'hole' clipping during animations that are notified to the window.
         mWindowAndroid.setAnimationPlaceholderView(
@@ -90,6 +96,11 @@ public class ContentShellActivity extends Activity {
                         @Override
                         public void onSuccess() {
                             finishInitialization(savedInstanceState);
+                            //js交互
+                            WebContents webContents = getActiveWebContents();
+                            if (webContents != null) {
+                                addJavascriptInterface(ContentShellActivity.this, "webview");
+                            }
                         }
 
                         @Override
@@ -99,6 +110,30 @@ public class ContentShellActivity extends Activity {
                     });
         }
     }
+
+    @JavascriptInterface
+    public String raiseEvent(String method, String value) {
+        //js交互
+        Toast.makeText(ContentShellActivity.this, "run android method:" + method + " value:" + value, Toast.LENGTH_SHORT).show();
+        WebContents webContents = getActiveWebContents();
+        //javascript:
+        ContentShellActivity.this.runOnUiThread(() -> {
+            try {
+                mShellManager.getActiveShell().loadUrl("javascript:runJs('test_data')");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+        return "";
+    }
+
+    public void addJavascriptInterface(@NonNull Object object, @NonNull String name) {
+        JavascriptInjector javascriptInjector =
+                JavascriptInjector.fromWebContents(getActiveShell().getWebContents(), false);
+        javascriptInjector.setAllowInspection(true);
+        javascriptInjector.addPossiblyUnsafeInterface(object, name, JavascriptInterface.class);
+    }
+
 
     private void finishInitialization(Bundle savedInstanceState) {
         String shellUrl;
@@ -128,7 +163,6 @@ public class ContentShellActivity extends Activity {
         super.onSaveInstanceState(outState);
         WebContents webContents = getActiveWebContents();
         if (webContents != null) {
-            // TODO(yfriedman): crbug/783819 - This should use GURL serialize/deserialize.
             outState.putString(ACTIVE_SHELL_URL_KEY, webContents.getLastCommittedUrl().getSpec());
         }
 
@@ -168,9 +202,10 @@ public class ContentShellActivity extends Activity {
     @Override
     protected void onStart() {
         super.onStart();
-
         WebContents webContents = getActiveWebContents();
-        if (webContents != null) webContents.onShow();
+        if (webContents != null) {
+            webContents.onShow();
+        }
     }
 
     @Override
@@ -206,7 +241,7 @@ public class ContentShellActivity extends Activity {
 
     /**
      * @return The {@link ShellManager} configured for the activity or null if it has not been
-     *         created yet.
+     * created yet.
      */
     public ShellManager getShellManager() {
         return mShellManager;
@@ -221,7 +256,7 @@ public class ContentShellActivity extends Activity {
 
     /**
      * @return The {@link WebContents} owned by the currently visible {@link Shell} or null if
-     *         one is not showing.
+     * one is not showing.
      */
     public WebContents getActiveWebContents() {
         Shell shell = getActiveShell();
