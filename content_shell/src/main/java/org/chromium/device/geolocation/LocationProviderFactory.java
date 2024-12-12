@@ -33,13 +33,14 @@ public class LocationProviderFactory {
     public static LocationProvider create() {
         if (sProviderImpl != null) return sProviderImpl;
 
-        if (sUseGmsCoreLocationProvider
-                && LocationProviderGmsCore.isGooglePlayServicesAvailable(
-                           ContextUtils.getApplicationContext())) {
-            sProviderImpl = new LocationProviderGmsCore(ContextUtils.getApplicationContext());
-        } else {
-            sProviderImpl = new LocationProviderAndroid();
-        }
+//        if (sUseGmsCoreLocationProvider
+//                && LocationProviderGmsCore.isGooglePlayServicesAvailable(
+//                           ContextUtils.getApplicationContext())) {
+//            sProviderImpl = new LocationProviderGmsCore(ContextUtils.getApplicationContext());
+//        } else {
+//        }
+
+        sProviderImpl = new LocationProviderAndroid();
         return sProviderImpl;
     }
 }

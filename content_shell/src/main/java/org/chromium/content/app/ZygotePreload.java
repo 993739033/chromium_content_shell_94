@@ -15,7 +15,7 @@ import org.chromium.base.JNIUtils;
 import org.chromium.base.Log;
 import org.chromium.base.library_loader.LibraryLoader;
 import org.chromium.base.process_launcher.ChildProcessService;
-import org.chromium.build.BuildConfig;
+import org.chromium.build1.BuildConfig;
 import org.chromium.components.version_info.VersionConstants;
 
 /**

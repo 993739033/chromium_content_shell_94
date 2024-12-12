@@ -19,7 +19,7 @@ import androidx.annotation.VisibleForTesting;
 
 import org.chromium.base.annotations.JNINamespace;
 import org.chromium.base.compat.ApiHelperForM;
-import org.chromium.build.BuildConfig;
+import org.chromium.build1.BuildConfig;
 
 /**
  * This class provides Android application context related utility methods.

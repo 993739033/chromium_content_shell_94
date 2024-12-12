@@ -40,7 +40,7 @@ import org.chromium.base.StrictModeContext;
 import org.chromium.base.compat.ApiHelperForM;
 import org.chromium.base.compat.ApiHelperForO;
 import org.chromium.base.compat.ApiHelperForP;
-import org.chromium.build.BuildConfig;
+import org.chromium.build1.BuildConfig;
 
 import java.io.IOException;
 import java.net.Socket;

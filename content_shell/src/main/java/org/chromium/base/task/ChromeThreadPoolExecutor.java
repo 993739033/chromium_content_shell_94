@@ -10,7 +10,7 @@ import android.os.Process;
 
 import androidx.annotation.VisibleForTesting;
 
-import org.chromium.build.BuildConfig;
+import org.chromium.build1.BuildConfig;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;

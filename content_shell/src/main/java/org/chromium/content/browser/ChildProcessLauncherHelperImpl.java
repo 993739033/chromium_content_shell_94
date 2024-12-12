@@ -36,7 +36,7 @@ import org.chromium.base.process_launcher.ChildProcessConstants;
 import org.chromium.base.process_launcher.ChildProcessLauncher;
 import org.chromium.base.process_launcher.FileDescriptorInfo;
 import org.chromium.base.task.PostTask;
-import org.chromium.build.BuildConfig;
+import org.chromium.build1.BuildConfig;
 import org.chromium.content.app.SandboxedProcessService;
 import org.chromium.content.common.ContentSwitchUtils;
 import org.chromium.content_public.browser.ChildProcessImportance;

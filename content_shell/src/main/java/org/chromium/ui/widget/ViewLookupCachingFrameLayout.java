@@ -14,7 +14,7 @@ import androidx.annotation.IdRes;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 
-import org.chromium.build.BuildConfig;
+import org.chromium.build1.BuildConfig;
 
 import java.lang.ref.WeakReference;
 

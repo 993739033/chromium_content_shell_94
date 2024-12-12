@@ -17,8 +17,8 @@ import org.chromium.ui.base.WindowAndroid;
 /* loaded from: classes2.dex */
 public class ShellManager extends FrameLayout {
     static final /* synthetic */ boolean $assertionsDisabled = false;
-//    public static final String DEFAULT_SHELL_URL = "http://www.baidu.com";
-    public static final String DEFAULT_SHELL_URL = "http://47.102.202.2:8080/app/js1.html";
+    public static final String DEFAULT_SHELL_URL = "http://www.baidu.com";
+//    public static final String DEFAULT_SHELL_URL = "http://47.102.202.2:8080/app/js1.html";
     private Shell mActiveShell;
     private ContentViewRenderView mContentViewRenderView;
     private String mStartupUrl;
