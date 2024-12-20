@@ -6,6 +6,7 @@ android {
 
     defaultConfig {
         minSdk 21
+        //noinspection ExpiredTargetSdkVersion
         targetSdk 30
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {

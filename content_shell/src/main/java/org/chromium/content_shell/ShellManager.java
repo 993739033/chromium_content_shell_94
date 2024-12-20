@@ -18,6 +18,9 @@ import org.chromium.ui.base.WindowAndroid;
 public class ShellManager extends FrameLayout {
     static final /* synthetic */ boolean $assertionsDisabled = false;
     public static final String DEFAULT_SHELL_URL = "http://www.baidu.com";
+//    public static final String DEFAULT_SHELL_URL = "https://www.whatismybrowser.com/";
+//    public static final String DEFAULT_SHELL_URL = "https://webbrowsertools.com/test-cors";
+//    public static final String DEFAULT_SHELL_URL = "https://liulanmi.com/labs/core.html";
 //    public static final String DEFAULT_SHELL_URL = "http://47.102.202.2:8080/app/js1.html";
     private Shell mActiveShell;
     private ContentViewRenderView mContentViewRenderView;

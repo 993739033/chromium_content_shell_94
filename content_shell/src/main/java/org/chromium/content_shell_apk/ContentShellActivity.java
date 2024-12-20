@@ -61,6 +61,8 @@ public class ContentShellActivity extends Activity {
             if (commandLineParams != null) {
                 CommandLine.getInstance().appendSwitchesAndArguments(commandLineParams);
             }
+            CommandLine.getInstance().appendSwitch("single-process");
+            CommandLine.getInstance().appendSwitch("no-sandbox");
         }
 
         DeviceUtils.addDeviceSpecificUserAgentSwitch();

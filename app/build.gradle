@@ -1,6 +1,4 @@
-plugins {
-    id 'com.android.application'
-}
+apply plugin: 'com.android.application'
 
 android {
     compileSdk 33
@@ -8,9 +6,10 @@ android {
     defaultConfig {
         applicationId "com.scode.chromium_content_shell_94"
         minSdk 21
+        //noinspection ExpiredTargetSdkVersion
         targetSdk 30
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.1"
         vectorDrawables {
             useSupportLibrary true
         }
