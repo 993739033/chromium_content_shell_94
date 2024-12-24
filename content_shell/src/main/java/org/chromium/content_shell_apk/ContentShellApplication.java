@@ -7,6 +7,8 @@ package org.chromium.content_shell_apk;
 import android.app.Application;
 import android.content.Context;
 
+import androidx.multidex.MultiDexApplication;
+
 import org.chromium.base.ApplicationStatus;
 import org.chromium.base.CommandLine;
 import org.chromium.base.ContextUtils;
@@ -19,7 +21,7 @@ import org.chromium.ui.base.ResourceBundle;
  * Entry point for the content shell application.  Handles initialization of information that needs
  * to be shared across the main activity and the child services created.
  */
-public class ContentShellApplication extends Application {
+public class ContentShellApplication extends MultiDexApplication {
     public static final String COMMAND_LINE_FILE = "/data/local/tmp/content-shell-command-line";
     private static final String PRIVATE_DATA_DIRECTORY_SUFFIX = "content_shell";
 

@@ -13,6 +13,8 @@ import org.chromium.mojo_base.mojom.String16;
 import org.chromium.url.internal.mojom.Origin;
 import org.chromium.url.mojom.Url;
 /* loaded from: classes2.dex */
+
+//todo
 public final class WebPreferences extends Struct {
     private static final DataHeader DEFAULT_STRUCT_INFO;
     private static final int STRUCT_SIZE = 312;

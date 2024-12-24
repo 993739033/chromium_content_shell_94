@@ -63,6 +63,11 @@ public class ContentShellActivity extends Activity {
             }
             CommandLine.getInstance().appendSwitch("single-process");
             CommandLine.getInstance().appendSwitch("no-sandbox");
+            CommandLine.getInstance().appendSwitch("disable-gesture-typing");
+            CommandLine.getInstance().appendSwitch("disable-web-security");
+            CommandLine.getInstance().appendSwitch("allow-running-insecure-content");
+            CommandLine.getInstance().appendSwitch("ignore-certificate-errors");
+            CommandLine.getInstance().getSwitches();
         }
 
         DeviceUtils.addDeviceSpecificUserAgentSwitch();
@@ -118,6 +123,7 @@ public class ContentShellActivity extends Activity {
         //js交互
         Toast.makeText(ContentShellActivity.this, "run android method:" + method + " value:" + value, Toast.LENGTH_SHORT).show();
         WebContents webContents = getActiveWebContents();
+
         //javascript:
         ContentShellActivity.this.runOnUiThread(() -> {
             try {
