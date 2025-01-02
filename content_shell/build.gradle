@@ -50,7 +50,7 @@ android {
 
 
     aaptOptions {
-        noCompress "dat", "bin", "pak"
+        noCompress "dat", "bin", "pak","html"
     }
 
     packagingOptions {

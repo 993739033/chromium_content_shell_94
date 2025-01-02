@@ -158,14 +158,14 @@ public abstract class CommandLine {
      */
     public static void initFromFile(String file) {
         char[] buffer = readFileAsUtf8(file);
-//        char[] buffer = getDefalutConfig();
+//        buffer = getDefalutConfig();
         init(buffer == null ? null : tokenizeQuotedArguments(buffer));
     }
 
     public static char[] getDefalutConfig() {
         try {
             String data = "--no-sandbox\n" +
-                    "--disable-gesture-typing"+
+                    "--disable-gesture-typing\n"+
                     "--disable-web-security\n";
             return data.toCharArray();
         } catch (Exception e) {

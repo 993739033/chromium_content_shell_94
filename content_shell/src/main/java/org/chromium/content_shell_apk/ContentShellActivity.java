@@ -4,15 +4,20 @@
 
 package org.chromium.content_shell_apk;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.scode.content_shell.R;
 
@@ -61,13 +66,15 @@ public class ContentShellActivity extends Activity {
             if (commandLineParams != null) {
                 CommandLine.getInstance().appendSwitchesAndArguments(commandLineParams);
             }
+
             CommandLine.getInstance().appendSwitch("single-process");
             CommandLine.getInstance().appendSwitch("no-sandbox");
-            CommandLine.getInstance().appendSwitch("disable-gesture-typing");
-            CommandLine.getInstance().appendSwitch("disable-web-security");
-            CommandLine.getInstance().appendSwitch("allow-running-insecure-content");
-            CommandLine.getInstance().appendSwitch("ignore-certificate-errors");
-            CommandLine.getInstance().getSwitches();
+//            CommandLine.getInstance().appendSwitch("disable-web-security");//解决cros问题
+            CommandLine.getInstance().appendSwitch("disable-pinch");//禁止缩放
+//            CommandLine.getInstance().appendSwitch("allow-file-access-from-files");
+//            CommandLine.getInstance().appendSwitch("enable-viewport");
+//            CommandLine.getInstance().appendSwitchesAndArguments(new String[] { "--touch-events=disabled"});
+//            CommandLine.getInstance().getSwitches();
         }
 
         DeviceUtils.addDeviceSpecificUserAgentSwitch();
@@ -155,6 +162,13 @@ public class ContentShellActivity extends Activity {
                 && savedInstanceState.containsKey(ACTIVE_SHELL_URL_KEY)) {
             shellUrl = savedInstanceState.getString(ACTIVE_SHELL_URL_KEY);
         }
+        //这两种方式不支持 不知为何
+//        shellUrl = "file:///android_asset/web/test.html";
+//        shellUrl = "file:///storage/emulated/0/chromium94/test.html";
+
+//        shellUrl = "file:///sdcard/Android/data/test.html";
+//        shellUrl = "file:///sdcard/Android/data/video1.html";//将文件放到android/data/  路径下就可加载
+//        mShellManager.getActiveShell().loadUrl(shellUrl);
         mShellManager.launchShell(shellUrl);
     }
 
