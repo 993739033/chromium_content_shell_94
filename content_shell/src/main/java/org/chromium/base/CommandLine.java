@@ -164,9 +164,7 @@ public abstract class CommandLine {
 
     public static char[] getDefalutConfig() {
         try {
-            String data = "--no-sandbox\n" +
-                    "--disable-gesture-typing\n"+
-                    "--disable-web-security\n";
+            String data = "--disable-web-security --user-data-dir=/sdcard/Android/data/";
             return data.toCharArray();
         } catch (Exception e) {
             e.printStackTrace();

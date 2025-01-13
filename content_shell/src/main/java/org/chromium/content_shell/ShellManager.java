@@ -17,11 +17,15 @@ import org.chromium.ui.base.WindowAndroid;
 /* loaded from: classes2.dex */
 public class ShellManager extends FrameLayout {
     static final /* synthetic */ boolean $assertionsDisabled = false;
-    public static final String DEFAULT_SHELL_URL = "http://www.baidu.com";
+//    public static final String DEFAULT_SHELL_URL = "http://www.baidu.com";
 //    public static final String DEFAULT_SHELL_URL = "https://www.whatismybrowser.com/";
 //    public static final String DEFAULT_SHELL_URL = "https://webbrowsertools.com/test-cors";
+//    public static final String DEFAULT_SHELL_URL = "https://robwu.nl/cors-anywhere.html";
+//    public static final String DEFAULT_SHELL_URL = "https://993739033.github.io/corstest/";
 //    public static final String DEFAULT_SHELL_URL = "https://liulanmi.com/labs/core.html";
-//    public static final String DEFAULT_SHELL_URL = "http://47.102.202.2:8080/app/js1.html";
+//    public static final String DEFAULT_SHELL_URL = "http://47.102.202.2:8080/app/js1.html";//测试js交互
+    public static final String DEFAULT_SHELL_URL = "https://test-videos.co.uk/bigbuckbunny/mp4-h265";//视频自动播放测试
+//    public static final String DEFAULT_SHELL_URL = "http://47.102.202.2:8080/upload/test2.html";//测试跨域访问
     private Shell mActiveShell;
     private ContentViewRenderView mContentViewRenderView;
     private String mStartupUrl;

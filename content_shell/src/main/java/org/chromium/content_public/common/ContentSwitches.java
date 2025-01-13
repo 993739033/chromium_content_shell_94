@@ -1,5 +1,6 @@
 package org.chromium.content_public.common;
 /* loaded from: classes2.dex */
+//配置项
 public final class ContentSwitches {
     public static final String ACCESSIBILITY_JAVASCRIPT_URL = "accessibility-js-url";
     public static final String ADD_OFFICIAL_COMMAND_LINE = "add-official-command-line";

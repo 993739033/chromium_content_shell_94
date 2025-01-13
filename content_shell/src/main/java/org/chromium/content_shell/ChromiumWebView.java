@@ -14,7 +14,6 @@ public class ChromiumWebView extends ShellManager{
     }
 
     public void initWebView() {
-//        getActiveShell().getWebContents().se().
     }
 
 

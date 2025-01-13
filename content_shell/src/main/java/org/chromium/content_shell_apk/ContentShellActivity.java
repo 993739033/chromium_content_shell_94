@@ -9,6 +9,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.Handler;
 import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
@@ -31,6 +33,7 @@ import org.chromium.content_public.browser.DeviceUtils;
 import org.chromium.content_public.browser.JavaScriptCallback;
 import org.chromium.content_public.browser.JavascriptInjector;
 import org.chromium.content_public.browser.WebContents;
+import org.chromium.content_public.common.ContentSwitches;
 import org.chromium.content_shell.Shell;
 import org.chromium.content_shell.ShellManager;
 import org.chromium.ui.base.ActivityWindowAndroid;
@@ -58,8 +61,6 @@ public class ContentShellActivity extends Activity {
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // Initializing the command line must occur before loading the library.
         if (!CommandLine.isInitialized()) {
             ((ContentShellApplication) getApplication()).initCommandLine();
             String[] commandLineParams = getCommandLineParamsFromIntent(getIntent());
@@ -67,14 +68,23 @@ public class ContentShellActivity extends Activity {
                 CommandLine.getInstance().appendSwitchesAndArguments(commandLineParams);
             }
 
-            CommandLine.getInstance().appendSwitch("single-process");
-            CommandLine.getInstance().appendSwitch("no-sandbox");
-//            CommandLine.getInstance().appendSwitch("disable-web-security");//解决cros问题
-            CommandLine.getInstance().appendSwitch("disable-pinch");//禁止缩放
-//            CommandLine.getInstance().appendSwitch("allow-file-access-from-files");
-//            CommandLine.getInstance().appendSwitch("enable-viewport");
-//            CommandLine.getInstance().appendSwitchesAndArguments(new String[] { "--touch-events=disabled"});
-//            CommandLine.getInstance().getSwitches();
+            CommandLine.getInstance().appendSwitch(ContentSwitches.SINGLE_PROCESS);
+            CommandLine.getInstance().appendSwitch(ContentSwitches.NONE_SANDBOX_TYPE);
+//            CommandLine.getInstance().appendSwitch("no-sandbox");
+//            CommandLine.getInstance().appendSwitch("enable-logging");
+//            以下设置允许跨域访问(cors)不支持 修改了so里的检测才能通过 对安全访问有要求的使用之前的libcontent_shell_content_view.so
+//            CommandLine.getInstance().appendSwitch(ContentSwitches.DISABLE_WEB_SECURITY);
+//            String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/xx/";
+//            CommandLine.getInstance().appendSwitchWithValue("user-data-dir", path);
+//            CommandLine.getInstance().appendSwitch(ContentSwitches.DISABLE_SITE_ISOLATION);
+//            CommandLine.getInstance().appendSwitch(ContentSwitches.DISABLE_SITE_ISOLATION_FOR_POLICY);
+            CommandLine.getInstance().appendSwitch(ContentSwitches.START_FULLSCREEN);
+            CommandLine.getInstance().appendSwitch(ContentSwitches.ALLOW_INSECURE_LOCALHOST);
+            CommandLine.getInstance().appendSwitch(ContentSwitches.DISABLE_PINCH);//禁止缩放
+            CommandLine.getInstance().appendSwitch(ContentSwitches.ALLOW_FILE_ACCESS_FROM_FILES);
+            CommandLine.getInstance().appendSwitch(ContentSwitches.CROSS_ORIGIN_WEB_ASSEMBLY_MODULE_SHARING_ALLOWED);
+            CommandLine.getInstance().appendSwitch(ContentSwitches.ENABLE_OOP_RASTERIZATION);//开额外线程进行计算？
+            CommandLine.getInstance().getSwitches();
         }
 
         DeviceUtils.addDeviceSpecificUserAgentSwitch();
@@ -90,8 +100,6 @@ public class ContentShellActivity extends Activity {
         mIntentRequestTracker.restoreInstanceState(savedInstanceState);
         mShellManager.setWindow(mWindowAndroid);
 
-        // Set up the animation placeholder to be the SurfaceView. This disables the
-        // SurfaceView's 'hole' clipping during animations that are notified to the window.
         mWindowAndroid.setAnimationPlaceholderView(
                 mShellManager.getContentViewRenderView().getSurfaceView());
 
@@ -128,18 +136,39 @@ public class ContentShellActivity extends Activity {
     @JavascriptInterface
     public String raiseEvent(String method, String value) {
         //js交互
+        Log.e("js", "run android method:" + method + " value:" + value);
         Toast.makeText(ContentShellActivity.this, "run android method:" + method + " value:" + value, Toast.LENGTH_SHORT).show();
         WebContents webContents = getActiveWebContents();
-
         //javascript:
-        ContentShellActivity.this.runOnUiThread(() -> {
-            try {
-                mShellManager.getActiveShell().loadUrl("javascript:runJs('test_data')");
-            } catch (Exception e) {
-                e.printStackTrace();
+//        ContentShellActivity.this.runOnUiThread(() -> {
+//            try {
+//                mShellManager.getActiveShell().loadUrl("javascript:runJs('test_data')");
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        });
+
+        new Handler().postDelayed(() -> {
+            switch (method) {
+                case "devices":
+                    sendToJs("devices", "151619848919");
+                    break;
+                case "config":
+                    break;
             }
-        });
+        }, 500);
         return "";
+    }
+
+    private void sendToJs(String name, String value) {
+        try {
+            //'" + name + "','" + value + "'
+            runOnUiThread(() -> {
+                mShellManager.getActiveShell().loadUrl("javascript:androidView('" + name + "','" + value + "')");
+            });
+        } catch (Exception e) {
+            Log.e("err", e.getMessage());
+        }
     }
 
     public void addJavascriptInterface(@NonNull Object object, @NonNull String name) {
@@ -162,10 +191,10 @@ public class ContentShellActivity extends Activity {
                 && savedInstanceState.containsKey(ACTIVE_SHELL_URL_KEY)) {
             shellUrl = savedInstanceState.getString(ACTIVE_SHELL_URL_KEY);
         }
-        //这两种方式不支持 不知为何
+//        这两种方式不支持 不知为何
 //        shellUrl = "file:///android_asset/web/test.html";
 //        shellUrl = "file:///storage/emulated/0/chromium94/test.html";
-
+//       以下的方式支持
 //        shellUrl = "file:///sdcard/Android/data/test.html";
 //        shellUrl = "file:///sdcard/Android/data/video1.html";//将文件放到android/data/  路径下就可加载
 //        mShellManager.getActiveShell().loadUrl(shellUrl);
@@ -261,25 +290,14 @@ public class ContentShellActivity extends Activity {
         return intent != null ? intent.getStringArrayExtra(COMMAND_LINE_ARGS_KEY) : null;
     }
 
-    /**
-     * @return The {@link ShellManager} configured for the activity or null if it has not been
-     * created yet.
-     */
     public ShellManager getShellManager() {
         return mShellManager;
     }
 
-    /**
-     * @return The currently visible {@link Shell} or null if one is not showing.
-     */
     public Shell getActiveShell() {
         return mShellManager != null ? mShellManager.getActiveShell() : null;
     }
 
-    /**
-     * @return The {@link WebContents} owned by the currently visible {@link Shell} or null if
-     * one is not showing.
-     */
     public WebContents getActiveWebContents() {
         Shell shell = getActiveShell();
         return shell != null ? shell.getWebContents() : null;

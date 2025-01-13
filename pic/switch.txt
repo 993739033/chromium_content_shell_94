@@ -47,7 +47,7 @@ const char kBrowserSubprocessPath[]         = "browser-subprocess-path";
 // Tells whether the code is running browser tests (this changes the startup URL
 // used by the content shell and also disables features that can make tests
 // flaky [like monitoring of memory pressure]).
-const char kBrowserTest[] = "browser-test";
+const char kBrowserTest[] = "browser-test";//todo
 
 // After a zygote forks a new process, change the stack canary. This switch is
 // useful so not all forked processes use the same canary (a secret value),
@@ -539,7 +539,7 @@ const char kIPCConnectionTimeout[]          = "ipc-connection-timeout";
 // Require dedicated processes for a set of origins, specified as a
 // comma-separated list. For example:
 //   --isolate-origins=https://www.foo.com,https://www.bar.com
-const char kIsolateOrigins[] = "isolate-origins";
+const char kIsolateOrigins[] = "isolate-origins";//todo
 
 // Enables the web-facing behaviors that will enable origin-isolation by default
 // at some point in the relatively near future.
@@ -755,9 +755,9 @@ const char kSingleProcess[]                 = "single-process";
 //
 // IMPORTANT: this isn't to be confused with --process-per-site (which is about
 // process consolidation, not isolation). You probably want this one.
-const char kSitePerProcess[]                = "site-per-process";
+const char kSitePerProcess[]                = "site-per-process";//todo
 
-// Disables site isolation.
+// Disables site isolation. //todo
 //
 // Note that the opt-in (to site-per-process, isolate-origins, etc.) via
 // enterprise policy and/or cmdline takes precedence over the
